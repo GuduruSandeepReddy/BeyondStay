@@ -26,8 +26,8 @@ const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
- const dbUrl = process.env.ATLASDB_URL;
-//const dbUrl = "mongodb://127.0.0.1:27017/beyondstay";
+const dbUrl = process.env.ATLASDB_URL;
+// const dbUrl = "mongodb://127.0.0.1:27017/beyondstay";
 
 async function main() {
     await mongoose.connect(dbUrl);
@@ -87,6 +87,7 @@ app.use((req, res, next) => {
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id", reviewsRouter);
+
 app.use("/", userRouter);
 
 app.all("*", (req, res, next) => {
